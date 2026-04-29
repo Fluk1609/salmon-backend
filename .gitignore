@@ -1,0 +1,14 @@
+# build
+/app
+*.exe
+*.out
+
+# go
+/vendor
+
+# env
+.env
+
+# OS
+.DS_Store
+Thumbs.db
