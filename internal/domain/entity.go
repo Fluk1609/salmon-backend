@@ -6,22 +6,22 @@ type SubOrder struct {
 	ItemID      string
 	WarehouseID string
 	SupplierID  string
-	RequestQty  float64
+	RequestQty  int
 	Type        OrderType
 	CreateDate  string
 	CustomerID  string
-	Allocated   float64
+	Allocated   int
 }
 
 type Warehouse struct {
 	ID    string
 	Name  string
-	Stock float64
+	Stock int
 }
 
 type Customer struct {
 	ID          string
 	Name        string
-	CreditLimit float64
-	UsedCredit  float64
+	CreditLimit int
+	UsedCredit  int
 }

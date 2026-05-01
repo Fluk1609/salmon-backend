@@ -4,12 +4,23 @@ import "backend/internal/domain"
 
 type Allocator struct{}
 
-func (a *Allocator) Auto(orders []domain.SubOrder) []domain.SubOrder {
+type AllocateResult struct {
+	Orders     []domain.SubOrder `json:"orders"`
+	Warehouses []any             `json:"warehouses"`
+	Customers  []any             `json:"customers"`
+	Logs       []any             `json:"logs"`
+}
 
-	// ❗ optimize: no map recreate, no slice copy
+func (a *Allocator) Auto(orders []domain.SubOrder) AllocateResult {
+
 	for i := range orders {
-		orders[i].Allocated = orders[i].RequestQty // demo
+		orders[i].Allocated = orders[i].RequestQty
 	}
 
-	return orders
+	return AllocateResult{
+		Orders:     orders,
+		Warehouses: []any{},
+		Customers:  []any{},
+		Logs:       []any{},
+	}
 }

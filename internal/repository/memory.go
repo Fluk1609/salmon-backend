@@ -27,7 +27,7 @@ func (m *MemoryRepo) GetAll() ([]domain.SubOrder, []domain.Warehouse, []domain.C
 		orders = append(orders, domain.SubOrder{
 			OrderID:     id,
 			SubOrderID:  id + "-001",
-			RequestQty:  float64(i % 100),
+			RequestQty:  (i % 100),
 			Type:        domain.DAILY,
 			CustomerID:  cust[i%2].ID,
 			WarehouseID: wh[i%2].ID,

@@ -4,16 +4,21 @@ import "backend/internal/domain"
 
 type ManualUsecase struct{}
 
-func (u *ManualUsecase) Execute(
-	id string,
-	qty float64,
-	orders []domain.SubOrder,
-) []domain.SubOrder {
+type ManualResult struct {
+	Orders []domain.SubOrder `json:"orders"`
+}
+
+func (u *ManualUsecase) Set(subOrderId string, qty int) ManualResult {
+
+	orders := []domain.SubOrder{}
 
 	for i := range orders {
-		if orders[i].SubOrderID == id {
+		if orders[i].SubOrderID == subOrderId {
 			orders[i].Allocated = qty
 		}
 	}
-	return orders
+
+	return ManualResult{
+		Orders: orders,
+	}
 }
